@@ -1,0 +1,12 @@
+{
+    "button": {
+        "confirm": "Xác nhận",
+        "cancel": "Hủy bỏ",
+        "close": "Đóng",
+        "update": "Cập nhật",
+        "detail": "Chi tiết",
+        "delete": "Xoá",
+        "detailConfig": "Chi tiết cấu hình",
+        "applyConfig": "Áp dụng cấu hình"
+    }
+}

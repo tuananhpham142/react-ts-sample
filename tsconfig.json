@@ -1,0 +1,95 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ES2021",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    /* Linting */
+    "noUnusedParameters": false,
+    "baseUrl": "./",
+    "paths": {
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/constants/*": [
+        "./src/constants/*"
+      ],
+      "@/contexts/*": [
+        "./src/contexts/*"
+      ],
+      "@/types/*": [
+        "./src/types/*"
+      ],
+      "@/hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@/hocs/*": [
+        "./src/hocs/*"
+      ],
+      "@/models/*": [
+        "./src/models/*"
+      ],
+      "@/pages/*": [
+        "./src/pages/*"
+      ],
+      "@/routes/*": [
+        "./src/routes/*"
+      ],
+      "@/services/*": [
+        "./src/services/*"
+      ],
+      "@/styles/*": [
+        "./src/styles/*"
+      ],
+      "@/translations/*": [
+        "./src/translations/*"
+      ],
+      "@/utils/*": [
+        "./src/utils/*"
+      ],
+    },
+    "allowJs": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": false,
+    "removeComments": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "ts-node": {
+    "swc": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ],
+  "typeRoots": [
+    "../node_modules/@types",
+    "../@types"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}

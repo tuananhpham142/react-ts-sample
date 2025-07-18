@@ -1,0 +1,9 @@
+{
+    "button": {
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "close": "Close",
+        "detailConfig": "Detail config",
+        "applyConfig": "Apply configuration"
+    }
+}

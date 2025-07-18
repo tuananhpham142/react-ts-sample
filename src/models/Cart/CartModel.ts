@@ -1,0 +1,132 @@
+export type Image = {
+    Name: string | null;
+    Url: string;
+    Alt: string | null;
+    Type: 0 | 1;
+};
+
+export type CartItemRequestModel = {
+    ProductId: string;
+    ServicePricesId: string;
+    GroupServiceId: string;
+    Count: number;
+    UsingDate: Array<string>;
+    GroupServiceName?: string;
+    ServicePricesName?: string;
+    ProductName?: string;
+    UnitChildName?: string;
+    UnitExchangeRate?: number;
+    UnitChildId?: number;
+    Unit: string;
+    Images?: Array<{ Url?: string }>;
+};
+export type CartItemResponseModel = {
+    CartItemId: string;
+    UsingDate: Array<string>;
+    Count: number;
+    SalePrice: number;
+    TotalPrice: number;
+    ImageUrl?: Array<{ Url?: string }>;
+    ProductId: string;
+    Unit: string;
+    UnitChildName?: string;
+    UnitExchangeRate?: number;
+    UnitChildId?: number;
+    ProductName?: string;
+    ServicePricesId: string;
+    ServicePricesName?: string;
+    GroupServiceId: string;
+    GroupServiceName: string;
+    Note: string;
+    AdditionItems: Array<AdditionItemModel>;
+};
+
+export type CartModel = {
+    CartId: string;
+    Contact: any;
+    ListItem: Array<CartListItemModel>;
+    DisWorkgroupId?: number;
+    DistributorId: string;
+    PoeWorkgroupId?: number;
+    PlaceOrEventId: string;
+    TenantId?: number;
+    WorkgroupId?: number;
+    Expires?: number;
+};
+export type CartListItemModel = {
+    CartItemId: string;
+    CategoryCode: string;
+    ProductId: string;
+    ProductCode: string;
+    ProductName: string;
+    ImageUrl: Array<Image>;
+    IsVoucher: number;
+    ServicePricesId: string;
+    ServicePricesName: string;
+    GroupServiceId: string;
+    ListingPropertyId: string;
+    ListingId: string;
+    GroupServiceName: string;
+    GroupName: string;
+    Unit: string;
+    UnitId: number;
+    UnitChildId: number;
+    UnitChildName: string;
+    UnitExchangeRate: number;
+    SalePrice: number;
+    PromotionPrice: number;
+    UsingDate: string[];
+    MinTickets: number;
+    MaxTickets: number;
+    Count: number;
+    DiscountValue: number;
+    TotalPrice: number;
+    Note: string;
+    AddOnItems: Array<any>;
+    VariationKey1stId: string;
+    VariationOption1stId: string;
+    VariationKey2ndId: string;
+    VariationOption2ndId: string;
+    VariationKey3rdId: string;
+    VariationOption3rdId: string;
+    VariationKeyUsingDateId: string;
+    VariationOptionUsingDateId: string;
+};
+export type BuyBeforeTermModel = {
+    IsBuyBefore: boolean;
+    BuyBefore: number;
+    BuyBeforeTimeType: number;
+};
+export type UsingDateTermModel = {
+    RequireUsingDate: boolean;
+    UsingDate: UsingDateModel;
+};
+export type UsingDateModel = {
+    TimeType: number;
+    BeginDate: string;
+    EndDate: string;
+    ListDayOfWeek: number[];
+    ListDate: any[];
+    ListTime?: any;
+    ListDateOff: string[];
+};
+
+export type AdditionItemModel = {
+    Id: string;
+    CartItemId: string;
+    UsingDate: Array<string>;
+    Count: number;
+    SalePrice: number;
+    TotalPrice: number;
+    ImageUrl?: Array<{ Url?: string }>;
+    ProductId: string;
+    Unit: string;
+    UnitChildName?: string;
+    UnitExchangeRate?: number;
+    UnitChildId?: number;
+    ProductName?: string;
+    ServicePricesId: string;
+    ServicePricesName?: string;
+    GroupServiceId: string;
+    GroupServiceName: string;
+};
