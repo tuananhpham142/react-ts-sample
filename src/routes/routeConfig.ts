@@ -1,6 +1,5 @@
 import Home from '@/pages/Home';
 import { RouteItemInterface } from '@/types/route.types';
-// import Workgroup from '@/pages/Workgroup/List';
 
 type RouteInterface = Array<RouteItemInterface>;
 
@@ -9,7 +8,6 @@ export const paths = {
 };
 
 const routes: RouteInterface = [
-    // Home
     {
         name: 'Home',
         path: `${paths.Home}`,

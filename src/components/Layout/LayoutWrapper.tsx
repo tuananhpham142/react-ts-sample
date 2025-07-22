@@ -44,7 +44,7 @@ const LayoutWrapper: FC<IProps> = (props) => {
     //         return <MainLayout>{children}</MainLayout>;
     //     }
     // }
-    return <></>;
+    return <>{children}</>;
 };
 
 export default LayoutWrapper;

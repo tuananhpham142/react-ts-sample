@@ -14,6 +14,7 @@ const Home: FC<Props> = (props) => {
     const carts = useSelector((state: RootState) => getListCartDisplay(state));
 
     const handleCreateCart = async () => {
+        alert('This Action will call API create cart');
         await dispatch(createCart({}));
     };
 
@@ -21,7 +22,18 @@ const Home: FC<Props> = (props) => {
         dispatch(getListCart({}));
     }, []);
 
-    return <div className='h-screen'>Homepage</div>;
+    return (
+        <div className='h-screen flex items-center justify-center'>
+            <ul>
+                {carts.map((cart) => (
+                    <li key={cart.Id}>{cart.Label}</li>
+                ))}
+            </ul>
+            <button className='bg-primary rounded-lg text-white px-2 py-1.5' onClick={handleCreateCart}>
+                Create cart
+            </button>
+        </div>
+    );
 };
 
 export default Home;
