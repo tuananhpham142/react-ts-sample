@@ -2,7 +2,6 @@ import getCookie from '@/utils/cookies/getCookie';
 import removeCookie from '@/utils/cookies/removeCookie';
 import type { InternalAxiosRequestConfig } from 'axios';
 import axiosBase from 'axios';
-import { API_URL } from './api';
 
 export type AxiosRequestType = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
@@ -11,7 +10,7 @@ const accessControlAllowOrigin = {
 };
 
 let axios = axiosBase.create({
-    baseURL: API_URL,
+    baseURL: import.meta.env.VITE_API_URL,
     withCredentials: false, // to use cookies
     headers: {
         Accept: 'application/json',

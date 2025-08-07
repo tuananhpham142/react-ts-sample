@@ -1,42 +1,47 @@
-import { TokenPayloadModel } from '@/models/Auth/AuthModel';
 import { LoginResponse } from '@/models/Auth/AuthResponse';
-import getCookie from '@/utils/cookies/getCookie';
 import parseJwt from '@/utils/jwt';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { jwtDecode } from 'jwt-decode';
-const token = getCookie(import.meta.env.VITE_AUTH_KEY as string);
-const refreshToken = getCookie(import.meta.env.VITE_AUTH_REFRESH as string);
-
-const initialState: {
-    data: {
-        AccessToken: string;
-        RefreshToken: string;
+import * as thunk from './thunk';
+interface State {
+    token: LoginResponse;
+    isLoading: boolean;
+    isLogin: boolean;
+    user: {
+        id: string;
+        avatar: string;
+        firstName: string;
+        lastName: string;
     };
-    tokenPayload: TokenPayloadModel;
-} = {
-    data: {
-        AccessToken: token || '',
-        RefreshToken: refreshToken || '',
+}
+
+const initialStateLogin: State = {
+    isLoading: false,
+    isLogin: false,
+    token: {
+        AccessToken: '',
+        Expires: 0,
+        RefreshToken: '',
     },
-    tokenPayload: token
-        ? parseJwt(token)
-        : {
-              permission: [],
-          },
+    user: {
+        id: '',
+        avatar: '',
+        firstName: '',
+        lastName: '',
+    },
 };
 
-const slice = createSlice({
+const auth = createSlice({
     name: 'auth',
-    initialState,
+    initialState: initialStateLogin,
     reducers: {
-        login: (state, action: PayloadAction<LoginResponse>) => {
+        loginReducer: (state, action: PayloadAction<LoginResponse>) => {
             return {
                 ...state,
                 data: action.payload,
-                tokenPayload: jwtDecode(action.payload.AccessToken),
+                tokenPayload: parseJwt(action.payload.AccessToken),
             };
         },
-        logout: (state) => {
+        logoutReducer: (state) => {
             return {
                 ...state,
                 data: {
@@ -47,8 +52,35 @@ const slice = createSlice({
             };
         },
     },
+    extraReducers: (builder) => {
+        builder.addCase(thunk.login.pending, (state, action) => {
+            return { ...state, isLoading: true };
+        });
+        builder.addCase(thunk.login.fulfilled, (state, action) => {
+            return {
+                ...state,
+                isLogin: true,
+                isLoading: false,
+                ...action.payload,
+            };
+        });
+        builder.addCase(thunk.login.rejected, (state, action) => {
+            return { ...state, isLoading: false, isLogin: false };
+        });
+        // Logout
+        builder.addCase(thunk.logout.pending, (state, action) => {
+            return { ...state };
+        });
+        builder.addCase(thunk.logout.fulfilled, (state, action) => {
+            return {
+                ...state,
+                ...initialStateLogin,
+            };
+        });
+        builder.addCase(thunk.logout.rejected, (state, action) => {
+            return { ...state };
+        });
+    },
 });
 
-export default slice;
-export const { login, logout } = slice.actions;
-export const { reducer: authReducer } = slice;
+export default auth;

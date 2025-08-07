@@ -7,7 +7,7 @@ import { TransitionGroup } from 'react-transition-group';
 
 const AppRoutes = () => {
     const location = useLocation();
-    const { data } = useAppSelector((state) => state.auth);
+    const { token } = useAppSelector((state) => state.auth);
 
     return (
         <TransitionGroup component={null}>
@@ -19,7 +19,7 @@ const AppRoutes = () => {
                             key={route.path}
                             path={route.path}
                             element={
-                                <LayoutWrapper token={data.AccessToken}>
+                                <LayoutWrapper token={token.AccessToken}>
                                     {/* @ts-ignore */}
                                     <route.component />
                                 </LayoutWrapper>

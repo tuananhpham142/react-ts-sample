@@ -1,12 +1,12 @@
 import removeCookie from '@/utils/cookies/removeCookie';
 import setCookie from '@/utils/cookies/setCookie';
 import { createListenerMiddleware } from '@reduxjs/toolkit';
-import { login, logout } from './auth/slice'; // Action cần lắng nghe
+import { loginReducer, logoutReducer } from './auth';
 
 const listenerMiddleware = createListenerMiddleware();
 
 listenerMiddleware.startListening({
-    actionCreator: login,
+    actionCreator: loginReducer,
     effect: async (action, api) => {
         setCookie({
             name: import.meta.env.VITE_AUTH_KEY as string,
@@ -26,7 +26,7 @@ listenerMiddleware.startListening({
 });
 
 listenerMiddleware.startListening({
-    actionCreator: logout,
+    actionCreator: logoutReducer,
     effect: async (action, api) => {
         removeCookie(import.meta.env.VITE_AUTH_KEY as string);
         removeCookie(import.meta.env.VITE_AUTH_REFRESH as string);
