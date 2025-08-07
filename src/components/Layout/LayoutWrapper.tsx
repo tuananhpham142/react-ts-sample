@@ -9,7 +9,7 @@ interface IProps extends PropsWithChildren {
 const LayoutWrapper: FC<IProps> = (props) => {
     const { children } = props;
     const location = useLocation();
-    const { data } = useAppSelector((state) => state.auth);
+    const { token } = useAppSelector((state) => state.auth);
 
     // IS AUTHENTICATED
     // const isAuthenticated = useMemo(() => {
